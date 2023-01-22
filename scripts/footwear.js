@@ -1,13 +1,48 @@
+
+function openpage(){
+  var x = document.getElementById("search").value;
+
+  if(x === "boy" || x === "Boy" || x === "BOY"){
+    window.open("/boy.html");
+  }
+  else if (x === "girl" || x === "Girl" || x === "GIRL"){
+    window.open("/girl.html");
+  }
+  else if (x === "kids" || x === "Kids" || x === "KIDS"){
+    window.open("/toddler.html");
+  }
+  else if(x === "footwear" || x === "Footwear" || x === "FOOTWEAR"){
+    window.open("/footwear.html");
+  }else{
+    alert("Wrong Input");
+  }
+}
+const navbar = document.querySelector('#navbar');
+  const closeMenu = document.querySelector('.closeMenu');
+  const openMenu = document.querySelector('.openMenu');
+
+  openMenu.addEventListener('click',show);
+  closeMenu.addEventListener('click',close);
+
+  function show(){
+    navbar.style.display='flex';
+    navbar.style.top = '0';
+  }
+  function close(){
+    navbar.style.top='-110%';
+  }
+
+
 let defaultArr = []
 let myData = []
 
 fetch("https://footwear-server.vercel.app/Footwear")
-  .then(res => res.json())
-  .then((data) => {
-    appendData(data)
-    myData = data
-    defaultArr = data
-  })
+.then(res => res.json())
+.then((data)=>{
+  appendData(data)
+  myData = data
+  defaultArr = data
+})
 
 let appendData = (myData) => {
 
@@ -22,13 +57,13 @@ let appendData = (myData) => {
     img.src = el.lmage;
 
     let name = document.createElement("h3");
-    name.textContent = el.title?el.title.substring(0,10):"no-title";
+    name.textContent = el.title.substring(0,14);
 
     let des = document.createElement("p");
-    des.textContent = "Lorem ipsum dolor sit amet consectetur adipisicing elit.";
+    des.textContent ="Lorem ipsum dolor sit amet consectetur, adipisicing elit.";
 
     let price = document.createElement("h5");
-    price.textContent ="₹ "+ Math.floor(el["d-price"])+".00";
+    price.textContent = "₹ " + el["d-price"] ;
 
     let btn = document.createElement("button");
     btn.textContent = "Add to Cart";
@@ -65,7 +100,7 @@ function Addtocart(el) {
     arr.push(el)
     localStorage.setItem('add-to-cart', JSON.stringify(arr))
     swal("Success", "Your Product Added to Cart!", "success");
-
+   
   }
 
 }
@@ -74,28 +109,29 @@ function Addtocart(el) {
 let sorted = document.querySelector("#sort");
 sorted.addEventListener("change", function (event) {
   let val = document.querySelector("#sort").value;
-  console.log(val)
+
   if (val == "LTH") {
     let data1 = myData.sort(function (a, b) {
-      return a["d-price"] - b["d-price"];
+      return a.price - b.price;
 
     })
     appendData(data1)
 
   } else if (val == "HTL") {
     let sorteddata = myData.sort(function (a, b) {
-      return b["d-price"] - a["d-price"];
+      return b.price - a.price;
 
     })
     appendData(sorteddata)
 
-  } else if (val == "default") {
-    fetch("https://footwear-server.vercel.app/Footwear")
-      .then(res => res.json())
-      .then((data) => {
-        appendData(data)
-        console.log(data)
-      })
+  } else if(val == "default") {
+    fetch("https://footwear-server.vercel.app/boys")
+.then(res => res.json())
+.then((data)=>{
+ 
+  appendData(data)
+ 
+})
   }
 })
 
@@ -104,41 +140,41 @@ filter.addEventListener("change", (e) => {
 
   let val = e.target.value
 
-  if (val == "Pine Kids Lace Up Party Wear Shoes- Black") {
-    let filtered = myData.filter(el => {
-      if (el.title == val) {
+  if(val=="boy T-shirt"){
+    let filtered = myData.filter(el=>{
+      if(el.title==val){
         return true;
-      } else {
+      }else{
         return false;
       }
     })
     appendData(filtered)
   }
-  else if (val == "Babyoye Sneakers with Velcro Closure - Grey") {
-    let filtered = myData.filter(el => {
-      if (el.title == val) {
+  else if(val=="ethnic wear"){
+    let filtered = myData.filter(el=>{
+      if(el.title==val){
         return true;
-      } else {
+      }else{
         return false;
       }
     })
     appendData(filtered)
   }
-  else if (val == "Babyoye Flip Flops With Velcro Closure Rainbow Print & Patch - Blue") {
-    let filtered = myData.filter(el => {
-      if (el.title == val) {
+  else if(val=="jeans & trousers"){
+    let filtered = myData.filter(el=>{
+      if(el.title==val){
         return true;
-      } else {
+      }else{
         return false;
       }
     })
     appendData(filtered)
   }
-  else if (val == "all") {
-    let filtered = myData.filter(el => {
-      if (el.title == val) {
+  else if(val=="all"){
+    let filtered = myData.filter(el=>{
+      if(el.title==val){
         return true;
-      } else {
+      }else{
         return false;
       }
     })
