@@ -1,4 +1,14 @@
-
+let displayname = document.getElementById("displayname");
+   
+  let username = JSON.parse(localStorage.getItem("username"));
+  displayname.innerText = username;
+  console.log(username);
+  let displayname1 = document.getElementById("displayname1");
+   
+  
+  displayname1.innerText = username;
+  console.log(username);
+  
 function openpage(){
   var x = document.getElementById("search").value;
 
