@@ -2,7 +2,7 @@ This is our Git repo of our construct Week Presentation that was given by Masai 
 We Have built a website called Firstcry.com, it is a clone website of Firstcry.com, as it was a collaborative project we are 5 member team,
 we have built this website in a span of 6 Days and we have used HTML CSS and JavaScript as our tech stack.
 
-I am rahul (Team-Leader) my student code is - fp08_132, responsible for sign-in/sign-up page as well as Product Page.
+I am Rahul (Team-Leader) my student code is - fp08_132, responsible for sign-in/sign-up page as well as Product Page.
 
 Member-1 Rushikesh chate- fw23_0075 responsible for Landing Page of the website.
 
